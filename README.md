@@ -1,1 +1,1 @@
-<img src = "../image/StudentManagementSystem.jpg" alt="ER">
+![StudentManagementSystem](https://github.com/NimeshaMadurangi/Student_Management/assets/116791096/3439dfdc-4869-4f59-b29c-38f492ad07c6)
