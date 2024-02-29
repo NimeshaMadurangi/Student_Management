@@ -9,19 +9,38 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-
+    private DepartmentRepo repo;
     @Override
     public Department addDepartment(DepartmentRequest request) {
+
+        Department department = new Department();
+
+        department.setDid(request.getDid());
+        department.setDname(request.getDname());
+
+        repo.save(department);
+
         return null;
     }
 
     @Override
     public DepartmentResponse viewDepartment(Long did) {
+
+        Optional<Department> departmentOptional = repo.findById (did);
+
+        if (departmentOptional.isPresent()) {
+
+            Department department = departmentOptional.get();
+
+            return new DepartmentResponse(department.getDid(),department.getDname());
+        }
+
         return null;
     }
 
