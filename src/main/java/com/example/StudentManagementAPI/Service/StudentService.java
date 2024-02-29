@@ -15,4 +15,8 @@ public interface StudentService {
     StudentResponse viewStudent(Long id);
 
     List<StudentResponse> allStudent();
+
+    void deleteStudent(Long id);
+
+    StudentRequest updateStudent(StudentRequest request, Long id);
 }

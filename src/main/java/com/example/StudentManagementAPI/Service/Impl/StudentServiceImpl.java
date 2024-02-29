@@ -69,4 +69,29 @@ public class StudentServiceImpl implements StudentService {
         return studentResponseList;
     }
 
+    @Override
+    public void deleteStudent(Long id) {
+
+        repo.deleteById(id);
+
+    }
+
+    @Override
+    public StudentRequest updateStudent(StudentRequest request, Long id) {
+
+        Optional<Student> optionalStudent = repo.findById(id);
+
+        if(optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            student.setName(request.getName());
+            student.setAge(request.getAge());
+            student.setAddress(request.getAddress());
+
+            repo.save(student);
+        }
+        return request;
+
+    }
+
+
 }
